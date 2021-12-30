@@ -15,14 +15,14 @@
             while($row = mysqli_fetch_assoc($query)){
                 if($row['sender_id'] === $sender_id){
                     $output .= '<div class="chat outgoing">
-                                <div class="details">
+                                <div class="details" id="outgoing_msg" value='.$row['msg_id'].'>
                                     <p>'. $row['msg'] .'</p>
                                 </div>
                                 </div>';
                 }else{
-                    $output .= '<div class="chat incoming">
+                    $output .= '<div class="chat incoming ">
                                
-                                <div class="details">
+                                <div class="details" value='.$row['msg_id'].'>
                                     <p>'. $row['msg'] .'</p>
                                 </div>
                                 </div>';

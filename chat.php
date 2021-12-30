@@ -23,7 +23,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat Area </title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <style>
+
+  </style>
 </head>
 
 <body>
@@ -37,6 +40,9 @@
           </span>
           <p></p>
         </div>
+        <div class="more">
+          <i class="fas fa-ellipsis-h dots" id="btn"></i>
+        </div>
       </header>
       <div class="chat-box">
 
@@ -47,6 +53,20 @@
         <button><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>
+
+    <div class="modal">
+      <div class="btn-box">
+        <button class="block" id="report">
+          report
+        </button>
+        <button class="block" id="block">
+          block
+        </button>
+        <button id="close" class="block">
+          close
+        </button>
+      </div>
+    </div>
   </div>
   <script>
     const form = document.querySelector(".typing-area"),
@@ -54,6 +74,8 @@
       inputField = form.querySelector(".input-field"),
       sendBtn = form.querySelector("button"),
       chatBox = document.querySelector(".chat-box");
+    let reportBtn = document.getElementById('report')
+    let blockBtn = document.getElementById('block')
 
     form.onsubmit = (e) => {
       e.preventDefault();
@@ -98,7 +120,7 @@
           if (xhr.status === 200) {
             let data = xhr.response;
             chatBox.innerHTML = data;
-            if(!chatBox.classList.contains("active")) {
+            if (!chatBox.classList.contains("active")) {
               scrollToBottom();
             }
           }
@@ -112,6 +134,61 @@
       chatBox.scrollTop = chatBox.scrollHeight;
     }
 
+    let togglebtn = document.getElementById('btn')
+    let closebtn = document.getElementById('close')
+    console.log(togglebtn)
+    let modal = document.querySelector('.modal')
+    togglebtn.addEventListener('click', function () {
+      modal.classList.add('modal-active')
+    })
+    closebtn.addEventListener('click', function () {
+      modal.classList.remove('modal-active')
+    })
+
+    // for reporting currunt user
+    reportBtn.onclick = () => {
+      let confirm = window.confirm("Are You Really Want to Report This User?")
+      if (confirm) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "partials/report.php", true);
+        xhr.onload = () => {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              let data = xhr.response;
+              if (data) {
+                alert(' This User Has Been Reported');
+                modal.classList.remove('modal-active')
+              }
+            }
+          }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("receiver_id=" + receiver_id);
+      }
+    };
+    //for blocking the user
+
+blockBtn.onclick = () => {
+      let confirm = window.confirm("Are You Really Want to Report This User?")
+      if (confirm) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "partials/block.php", true);
+        xhr.onload = () => {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              let data = xhr.response;
+              if(data) {
+                alert(' This User Has Been blocked');
+                window.location.href='main.php';
+              }
+            
+            }
+          }
+        }
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("receiver_id=" + receiver_id);
+      }
+    };
   </script>
 </body>
 
