@@ -1,4 +1,7 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
   session_start();
   require 'partials/dbconnect.php';
   if(!isset($_SESSION['public_key'])){
@@ -153,8 +156,10 @@
         xhr.open("POST", "partials/report.php", true);
         xhr.onload = () => {
           if (xhr.readyState === XMLHttpRequest.DONE) {
+           
             if (xhr.status === 200) {
               let data = xhr.response;
+              console.log(data)
               if (data) {
                 alert(' This User Has Been Reported');
                 modal.classList.remove('modal-active')
