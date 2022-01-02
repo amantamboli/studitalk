@@ -14,16 +14,25 @@
         if(mysqli_num_rows($query) > 0){
             while($row = mysqli_fetch_assoc($query)){
                 if($row['sender_id'] === $sender_id){
-                    $output .= '<div class="chat outgoing">
-                                <div class="details" id="outgoing_msg" value='.$row['msg_id'].'>
-                                    <p>'. $row['msg'] .'</p>
+
+                    $output .= '<div class="chat outgoing" >
+                                <div class="details" ondblclick="dblclick1(event)" id="outgoing_msg" value='.$row['msg_id'].'>
+                                    <p id='.$row['msg_id'].'>'. $row['msg'] .'</p>
                                 </div>
                                 </div>';
                 }else{
-                    $output .= '<div class="chat incoming ">
+
+                    $sql2 = "select * from messages where msg_id=$row[msg_id]";
+                    $result2 = mysqli_query($conn, $sql2);
+                    $row2=mysqli_fetch_array($result2);
+                    if($row2['hide']){
+                        continue;
+                    }
+
+                    $output .= '<div class="chat incoming" >
                                
-                                <div class="details" value='.$row['msg_id'].'>
-                                    <p>'. $row['msg'] .'</p>
+                                <div class="details" ondblclick="dblclick1(event)" value='.$row['msg_id'].'>
+                                    <p id='.$row['msg_id'].'>'. $row['msg'] .'</p>
                                 </div>
                                 </div>';
                 }

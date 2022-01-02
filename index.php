@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      $result2 = mysqli_query($conn,$sql2);
                      include 'sendotp.php';
                        sendotp($to,$otp);
-                     header("location: verifyotp.php");
+                     header("location: verifyotp.php"); 
             }
         }
         else{    
