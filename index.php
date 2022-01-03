@@ -1,8 +1,4 @@
-<?php
-if(!isset($_SESSION['public_key'])){
-    header("location: login.php");
-  }
-?>
+
   <!doctype html>
 <html lang="en">
 

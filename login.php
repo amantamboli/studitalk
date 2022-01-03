@@ -13,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql = "Select * from users where username='$username'";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
+    // echo $num;
     $row=mysqli_fetch_array($result);
     // print_r($row);
     // echo $row['unique_id'];
