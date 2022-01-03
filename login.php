@@ -1,8 +1,6 @@
 <?php
 
-if(!isset($_SESSION['public_key'])){
-    header("location: login.php");
-  }
+
 $showAlert = false;
 $showError = false;
 
