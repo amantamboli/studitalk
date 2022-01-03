@@ -1,126 +1,178 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-//    Seb@1234 johnshelby392@gmail.com
-$showAlert = false;
-$showError = false;
-$exists = false;
-require 'partials/dbconnect.php';
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $passwordc = $_POST["passwordc"];
-    $exists=false;
-    $existSql="select * from users where username='$username'";
-    $result = mysqli_query($conn,$existSql);
+if(!isset($_SESSION['public_key'])){
+    header("location: login.php");
+  }
+?>
+  <!doctype html>
+<html lang="en">
 
-    $rowExists=mysqli_num_rows($result);
-    if($rowExists>0){
-        $exists=true;
-        $showError = " This username is alerady exists";
-    }
-    else{
-        if(($password == $passwordc &&  $exists==false)){
-            $random_id = rand(time(), 100000000);
-            $hash= password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `users`( `public_key`, `username`, `email`, `password`) VALUES ('$random_id','$username','$email','$hash');";
-            $result = mysqli_query($conn,$sql);
-            if($result){ 
-                $showAlert = true;   
-                session_start();
-                     $sql = "Select * from users where username='$username'";
-                     $result = mysqli_query($conn, $sql);
-                     $data = mysqli_fetch_assoc($result);
-                     $_SESSION['public_key'] = $data['public_key'];
-                     $public_key = $data['public_key'];
-                     $to = $data['email'];
-                     $otp = $random_id = mt_rand(111111, 999999);
-                     $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
-                     $result2 = mysqli_query($conn,$sql2);
-                     include 'sendotp.php';
-                       sendotp($to,$otp);
-                     header("location: verifyotp.php"); 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>DevTalk App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-space {
+            margin-left: 8px;
+        }
+
+        .container1 {
+            width: 65%;
+            left: 50%;
+            height: 83vh;
+            margin: auto;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 16px;
+          
+            
+            box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+                0 32px 64px -48px rgba(0, 0, 0, 0.5);
+        }
+
+        .box-head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40vh;
+
+
+        }
+
+        .box {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            height: 10vh;
+        }
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+
+        .type-box {
+            height: 3rem;
+
+            /*This part is important for centering*/
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .typing-demo {
+            width: 22ch;
+            animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            font-size: 2em;
+            max-width: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
             }
         }
-        else{    
-            $showError = "Password and confirm password do not match";
+
+        @keyframes blink {
+            50% {
+                border-color: transparent
+            }
         }
-    }
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup </title>
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/alert.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+        .footer{
+            background-color: black;
+            height: 3rem;
+            width: 100%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media screen and (max-width:480px){
+            .container1{
+                width: 100%;
+                height: 50vh;
+            }
+            .box{
+                width: 80%;
+            }
+        }
+    </style>
 </head>
-<style>
-    .foot{
-    margin: 10px;
-    text-decoration: none;
-}
-</style>
+
 <body>
-<?php
-if($showError){
-    echo '<div class="alert error">
-        <input type="checkbox" id="alert1"/>
-        <label class="close" title="close" for="alert1">
-        <i class="icon-remove"></i>
-        </label>
-        <p class="inner">
-            <strong>Warning! </strong>'.$showError.'
-        </p>
-        </div>';
-}
-if($showAlert){
-    echo '<div class="alert success">
-        <input type="checkbox" id="alert1"/>
-        <label class="close" title="close" for="alert1">
-        <i class="icon-remove"></i>
-        </label>
-        <p class="inner">
-            <strong> Success </strong> Account has been created successfully! Now you Can login.
-        </p>
-        </div>';
-}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DevTalk</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <div class="d-flex ">
+                    <a href="signup.php" class="btn btn-outline-secondary btn-space">Signup</a>
 
-?>
-
-    <div class="container">
-        <div class="header">
-            <h2>Create Account</h2>
+                    <a href="login.php" class="btn btn-outline-secondary btn-space">login</a>
+                </div>
+            </div>
         </div>
-        <form id="form" class="form" method="post" action="">
-            <div class="form-control">
-                <label for="username">Username</label>
-                <input type="text" placeholder="" id="username" name="username" required/>             
+    </nav>
+    <div class="container1">
+        <div class="type-box">
+            <div class="typing-demo">
+                Welcome to DevTalk!
             </div>
-            <div class="form-control">
-                <label for="username">Email</label>
-                <input type="email" placeholder="" id="email" name="email" required/>                
-            </div>
-            <div class="form-control">
-                <label for="username">Password</label>
-                <input type="password" placeholder="" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>               
-            </div>
-            <div class="form-control">
-                <label for="username">Password check</label>
-                <input type="password" placeholder="re-enter" id="password2" name="passwordc" required/>
-            </div>
-            <button>Signup</button>
-            <div class="foot" id="foot">
-                Already Have an Account?
-                <a href="login.php">Login Here</a>
-            </div>
-        </form>
+        </div>
+        <div class="box">
+            Connect with developers according to your preferences!
+        </div>
+        <div class="buttons">
+            <a href="signup.php" class="btn btn-outline-dark btn-space">Signup</a>
+           
+            <a href="login.php" class="btn btn-outline-dark btn-space">login</a>
+        </div>
     </div>
+    <div class="footer">
+&copy; 2022
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>

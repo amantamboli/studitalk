@@ -37,6 +37,7 @@ error_reporting(E_ALL);
     <section class="chat-area">
       <header>
         <a href="main.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <img src="images/<?php echo $row['img']; ?>" alt="NA">
         <div class="details">
           <span>
             <?php echo $row['username'] ?>

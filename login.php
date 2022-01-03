@@ -1,5 +1,8 @@
 <?php
 
+if(!isset($_SESSION['public_key'])){
+    header("location: login.php");
+  }
 $showAlert = false;
 $showError = false;
 
@@ -105,7 +108,7 @@ if($showError){
             <button id="submit">Login</button>
             <div class="foot" id="foot">
                 Don't Have an Account?
-                <a href="index.php">Signup Here</a>
+                <a href="signup.php">Signup Here</a>
             </div>
             <div class="foot" id="foot">
                 <a href="forgotpass.php">Forgot Password</a>

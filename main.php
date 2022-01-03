@@ -29,6 +29,7 @@
     <section class="users">
       <header>
         <div class="content">
+        <img src="images/<?php echo $row['img']; ?>" alt="">
 
 
           <div class="details">
