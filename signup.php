@@ -31,9 +31,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(in_array($img_type, $types) === true){
                 $time = time();
                 $new_img_name = $time.$img_name;
-                if(move_uploaded_file($tmp_name,"images/".$new_img_name)){
+                move_uploaded_file($tmp_name,"images/".$new_img_name);
                     echo $new_img_name;
-                }
+                
             }else{
                 $showError = "Please upload an image file - jpeg, png, jpg";
             }
@@ -157,7 +157,7 @@ if($showAlert){
                 <input type="text" placeholder="preferences" id="preferences" name="preferences" required/>
             </div>
             <div class="field image">
-          <label>Select Image</label>
+          <label>Select Profile Pic</label>
           <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
         </div>
             <button>Signup</button>
