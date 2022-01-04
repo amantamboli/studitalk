@@ -9,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>DevTalk App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -32,7 +33,7 @@
             margin-top: 15px;
             margin-bottom: 15px;
             border-radius: 16px;
-          
+           
             
             box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
                 0 32px 64px -48px rgba(0, 0, 0, 0.5);
@@ -108,6 +109,15 @@
             align-items: center;
             justify-content: center;
         }
+        .github a{
+            text-decoration: none;
+        }
+        .github{
+            
+           margin: auto;
+           width: 25%;
+           margin-top: 5%;
+        }
         @media screen and (max-width:480px){
             .container1{
                 width: 100%;
@@ -115,6 +125,10 @@
             }
             .box{
                 width: 80%;
+            }
+            .github{
+                width: 65%;
+                margin-top: 15%;
             }
         }
     </style>
@@ -156,6 +170,10 @@
             <a href="signup.php" class="btn btn-outline-dark btn-space">Signup</a>
            
             <a href="login.php" class="btn btn-outline-dark btn-space">login</a>
+        </div>
+        <div class="github">
+           <a href="https://github.com/Aman-tamboli/chatapp" target="_blank"> Follow Our Code On GitHub
+            <i class="fab fa-github"></i></a>
         </div>
     </div>
     <div class="footer">
