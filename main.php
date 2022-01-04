@@ -39,18 +39,28 @@
 
           </div>
         </div>
-        <a href="partials/logout.php" class="logout">Logout</a>
+        <div class="more">
+          <i class="fas fa-ellipsis-h dots" id="btn"></i>
+        </div>
       </header>
       <div class="search">
-        <span class="text">Select an user to start chat</span>
+        <!-- <span class="text">Select an user to start chat</span> -->
         <input type="text" placeholder="Enter name to search...">
-        <button><i class="fas fa-search"></i></button>
+        <!-- <button><i class="fas fa-search"></i></button> -->
       </div>
       <div class="users-list">
 
       </div>
     </section>
   </div>
+  <div class="modal">
+        <div class="btn-box">
+            <button class="edit"><a href="editprofile.php"> Edit Profile</a> </button>
+            <button class="log_out"><a href="partials/logout.php">logout</a></button>
+            <button id="close" class="block">close</button>
+           
+        </div>
+    </div>
   <script>
     let usersList = document.querySelector(".users-list");
     setInterval(() => {
@@ -70,7 +80,18 @@
       }
       xhr.send();
     }, 500);
+    let togglebtn = document.getElementById("btn");
+    let closebtn = document.getElementById("close");
+console.log(togglebtn);
+let modal = document.querySelector(".modal");
+togglebtn.addEventListener("click", function () {
+  modal.classList.add("modal-active");
+});
+closebtn.addEventListener("click", function () {
+  modal.classList.remove("modal-active");
+});
   </script>
+  <script src="js/chat.js"></script>
 </body>
 
 </html>

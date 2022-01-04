@@ -33,9 +33,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      $otp = $random_id = mt_rand(111111, 999999);
                      $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
-                     include 'sendotp.php';
-                       sendotp($to,$otp);
-                     header("location: verifyotp.php");
+                    //  include 'sendotp.php';
+                    //    sendotp($to,$otp);
+                     header("location: main.php");
                      
                 }
             }
