@@ -1,3 +1,4 @@
+console.log("connected")
 const form = document.querySelector(".typing-area"),
   receiver_id = form.querySelector(".receiver_id").value,
   inputField = form.querySelector(".input-field"),
@@ -77,11 +78,14 @@ closebtn.addEventListener("click", function () {
 // for reporting currunt user
 reportBtn.onclick = () => {
   let confirm = window.confirm("Are You Really Want to Report This User?");
+  
   if (confirm) {
+    
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "partials/report.php", true);
     xhr.onload = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
+        console.log(xhr.status)
         if (xhr.status === 200) {
           let data = xhr.response;
           console.log(data);
@@ -113,7 +117,7 @@ blockBtn.onclick = () => {
           }
         }
       }
-    };
+    }; 
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("receiver_id=" + receiver_id);
   }

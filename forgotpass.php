@@ -33,7 +33,7 @@ function sendMail($email,$token)
         $mail->Subject = 'Password reset link';
         $mail->Body    = "we got a request from you to reset you password<br>
         click the link below: <br>
-        <a href='https://mahi.codes/application/updatepassword.php?email=$email&token=$token'>Reset Password</a>";
+        <a href='https://mahi.codes/chatapp/updatepassword.php?email=$email&token=$token'>Reset Password</a>";
        
     
         $mail->send();

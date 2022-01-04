@@ -3,7 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 //    Seb@1234 johnshelby392@gmail.com
 $showAlert = false;
 $showError = false;
@@ -31,9 +30,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(in_array($img_type, $types) === true){
                 $time = time();
                 $new_img_name = $time.$img_name;
-                move_uploaded_file($tmp_name,"images/".$new_img_name);
+                if(move_uploaded_file($tmp_name,"images/".$new_img_name)){
                     echo $new_img_name;
-                
+                }
             }else{
                 $showError = "Please upload an image file - jpeg, png, jpg";
             }
@@ -157,7 +156,7 @@ if($showAlert){
                 <input type="text" placeholder="preferences" id="preferences" name="preferences" required/>
             </div>
             <div class="field image">
-          <label>Select Profile Pic</label>
+          <label>Select Image</label>
           <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
         </div>
             <button>Signup</button>
