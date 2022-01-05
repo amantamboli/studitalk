@@ -1,5 +1,10 @@
-
-  <!doctype html>
+<?php
+session_start();
+if(isset($_SESSION['public_key'])){
+    header("location: main.php");
+  }
+?>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,7 +14,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>DevTalk App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -33,8 +38,8 @@
             margin-top: 15px;
             margin-bottom: 15px;
             border-radius: 16px;
-           
-            
+
+
             box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
                 0 32px 64px -48px rgba(0, 0, 0, 0.5);
         }
@@ -100,7 +105,8 @@
                 border-color: transparent
             }
         }
-        .footer{
+
+        .footer {
             background-color: black;
             height: 3rem;
             width: 100%;
@@ -109,24 +115,29 @@
             align-items: center;
             justify-content: center;
         }
-        .github a{
+
+        .github a {
             text-decoration: none;
         }
-        .github{
-            
-           margin: auto;
-           width: 25%;
-           margin-top: 5%;
+
+        .github {
+
+            margin: auto;
+            width: 25%;
+            margin-top: 5%;
         }
-        @media screen and (max-width:480px){
-            .container1{
+
+        @media screen and (max-width:480px) {
+            .container1 {
                 width: 100%;
                 height: 50vh;
             }
-            .box{
+
+            .box {
                 width: 80%;
             }
-            .github{
+
+            .github {
                 width: 65%;
                 margin-top: 15%;
             }
@@ -168,16 +179,16 @@
         </div>
         <div class="buttons">
             <a href="signup.php" class="btn btn-outline-dark btn-space">Signup</a>
-           
+
             <a href="login.php" class="btn btn-outline-dark btn-space">login</a>
         </div>
         <div class="github">
-           <a href="https://github.com/Aman-tamboli/chatapp" target="_blank"> Follow Our Code On GitHub
-            <i class="fab fa-github"></i></a>
+            <a href="https://github.com/Aman-tamboli/chatapp" target="_blank"> Follow Our Code On GitHub
+                <i class="fab fa-github"></i></a>
         </div>
     </div>
     <div class="footer">
-&copy; 2022
+        &copy; 2022
     </div>
 
 

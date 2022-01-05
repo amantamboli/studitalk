@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if(isset($_SESSION['public_key'])){
+    header("location: main.php");
+  }
 $showAlert = false;
 $showError = false;
 
