@@ -78,9 +78,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      // insert otp in users table
                      $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
-                    //  include 'sendotp.php';
-                    //    sendotp($to,$otp);
-                     header("location: main.php");
+                     include 'sendotp.php';
+                       sendotp($to,$otp);
+                     header("location: verifyotp.php");
             }
         }
         else{    
