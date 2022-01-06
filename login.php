@@ -16,9 +16,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     $row=mysqli_fetch_array($result);
-    // print_r($row);
-    // echo $row['unique_id'];
-    // echo var_dump($num);
     if ($num == 1){
         // while($row=mysqli_fetch_array($result)){
             if(password_verify($password,$row['password'])){
@@ -36,9 +33,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      $otp = $random_id = mt_rand(111111, 999999);
                      $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
-                     include 'sendotp.php';
+                     include 'partials/sendotp.php';
                        sendotp($to,$otp);
-                     header("location: verifyotp.php");
+                    header("location: partials/verifyotp.php");
+                    //  header("location: main.php");
                      
                 }
             }
@@ -105,13 +103,13 @@ if($showError){
 
             </div>
 
-            <button id="submit">Login</button>
+            <button id="submit"  class="btn">Login</button>
             <div class="foot" id="foot">
                 Don't Have an Account?
                 <a href="signup.php">Signup Here</a>
             </div>
             <div class="foot" id="foot">
-                <a href="forgotpass.php">Forgot Password</a>
+                <a href="partials/forgotpass.php">Forgot Password</a>
             </div>
         </form>
         

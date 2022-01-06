@@ -1,11 +1,9 @@
-console.log("connected")
+console.log("connected");
 const form = document.querySelector(".typing-area"),
   receiver_id = form.querySelector(".receiver_id").value,
   inputField = form.querySelector(".input-field"),
   sendBtn = form.querySelector("button"),
   chatBox = document.querySelector(".chat-box");
-let reportBtn = document.getElementById("report");
-let blockBtn = document.getElementById("block");
 
 form.onsubmit = (e) => {
   e.preventDefault();
@@ -22,7 +20,7 @@ inputField.onkeyup = () => {
 
 sendBtn.onclick = () => {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "partials/insert.php", true);
+  xhr.open("POST", "partials/insertmessage.php", true);
   xhr.onload = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
@@ -44,7 +42,7 @@ chatBox.onmouseleave = () => {
 
 setInterval(() => {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "partials/fetch.php", true);
+  xhr.open("POST", "partials/fetchmessage.php", true);
   xhr.onload = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
@@ -64,28 +62,35 @@ function scrollToBottom() {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-let togglebtn = document.getElementById("btn");
-let closebtn = document.getElementById("close");
-console.log(togglebtn);
-let modal = document.querySelector(".modal");
-togglebtn.addEventListener("click", function () {
-  modal.classList.add("modal-active");
+let reportBtn = document.getElementById("report");
+let blockBtn = document.getElementById("block");
+
+let btn = document.getElementById("btnm");
+window.addEventListener("mouseup", function (event) {
+  let modal = document.querySelector(".modal");
+  let more = document.querySelector(".more");
+  if (event.target != modal && event.target.parentNode != modal) {
+    modal.style.display = "none";
+    more.style.display = "block";
+  }
 });
-closebtn.addEventListener("click", function () {
-  modal.classList.remove("modal-active");
+btn.addEventListener("click", function () {
+  let modal = document.querySelector(".modal");
+  let more = document.querySelector(".more");
+  modal.style.display = "block";
+  more.style.display = "none";
 });
 
 // for reporting currunt user
 reportBtn.onclick = () => {
   let confirm = window.confirm("Are You Really Want to Report This User?");
-  
+
   if (confirm) {
-    
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "partials/report.php", true);
+    xhr.open("POST", "partials/reportuser.php", true);
     xhr.onload = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        console.log(xhr.status)
+        console.log(xhr.status);
         if (xhr.status === 200) {
           let data = xhr.response;
           console.log(data);
@@ -106,7 +111,7 @@ blockBtn.onclick = () => {
   let confirm = window.confirm("Are You Really Want to Report This User?");
   if (confirm) {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "partials/block.php", true);
+    xhr.open("POST", "partials/blockuser.php", true);
     xhr.onload = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
@@ -117,7 +122,7 @@ blockBtn.onclick = () => {
           }
         }
       }
-    }; 
+    };
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("receiver_id=" + receiver_id);
   }
@@ -144,4 +149,4 @@ function dblclick1(event) {
   xhr.send("receiver_id=" + receiver_id + "&msg_id=" + msg_id);
 }
 
-// let msg2 = document.querySelector(".outgoing");
+

@@ -42,11 +42,18 @@ error_reporting(E_ALL);
           <span>
             <?php echo $row['username'] ?>
           </span>
-          <p></p>
         </div>
         <div class="more">
-          <i class="fas fa-ellipsis-h dots" id="btn"></i>
+          <i class="fas fa-ellipsis-h dots" id="btnm"></i>
         </div>
+        <div class="modal">
+                    <div class="btnm" id="report">
+                        report
+                    </div>
+                    <div class="btnm" id="block">
+                        block
+                    </div>
+                </div>
       </header>
       <div class="chat-box">
 
@@ -58,19 +65,7 @@ error_reporting(E_ALL);
       </form>
     </section>
 
-    <div class="modal">
-      <div class="btn-box">
-        <button class="block" id="report">
-          report
-        </button>
-        <button class="block" id="block">
-          block
-        </button>
-        <button id="close" class="block">
-          close
-        </button>
-      </div>
-    </div>
+    
   </div>
   <script>
   
@@ -78,4 +73,4 @@ error_reporting(E_ALL);
   <script src="js/chat.js"></script>
 </body>
 
-</html>
+</html> 

@@ -1,9 +1,6 @@
 <?php
-// ini_set('display_errors', 0);
-// ini_set('display_startup_errors', 0);
-// error_reporting(E_ALL);
 session_start();
-require 'partials/dbconnect.php';
+require 'dbconnect.php';
 
 $public_key=$_SESSION['public_key'];
 
@@ -39,18 +36,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $email=$_POST['email'];
     $update="UPDATE `users` SET `email`='$email' WHERE public_key=$public_key";
     $run=mysqli_query($conn,$update);
-    
         $updatemail = true;
-   
     }
 
     if(isset($_POST['preferences'])){
-        
     $preferences=$_POST['preferences'];
     $update="UPDATE `users` SET `preferences`='$preferences' WHERE public_key=$public_key";
     $run=mysqli_query($conn,$update);
     $updatepreferences = true;
-    
     }
     if(isset($_FILES['image'])){
         $img_name = $_FILES['image']['name'];
@@ -97,8 +90,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile: <?php echo $username;?> </title>
-    <link rel="stylesheet" href="css/edit.css">
-    <link rel="stylesheet" href="css/alert.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/alert.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 <body>
@@ -126,44 +119,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <form id="form" class="form" method="post" action="" enctype="multipart/form-data" autocomplete="off">
                 <div class="form-control">
                     <form action="" method="post" enctype="multipart/form-data">
-                        <table class="form-control">
-
                             <div class="form-control">
                                 <label for="username">change your Username</label>
                                 <input type="text" id="username" name="username" value="<?php echo $username;?>" />
-
-                                <div class="field image">
-                                    <label>change profile image</label>
-                                    <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg"
+                            </div>
+                                <div class="field image form-control">
+                                    <label for="image">change profile image</label>
+                                    <input id="image" type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg"
                                         value="<?php echo $img;?>" />
                                 </div>
-
-
                                 <div class="form-control">
-                                    <label for="username">change your Email</label>
-                                    <input type="email" name="email" value="<?php echo $email;?>" />
+                                    <label for="email">change your Email</label>
+                                    <input id="email" type="email" name="email" value="<?php echo $email;?>" />
                                 </div>
-
                                 <div class="form-control">
-                                    <label for="username">change your Preferences</label>
-                                    <input type="preferences" name="preferences" value="<?php echo $preferences;?>" />
+                                    <label for="preferences">change your Preferences</label>
+                                    <input id="preferences" type="preferences" name="preferences" value="<?php echo $preferences;?>" />
                                 </div>
-
-
                                 <div class="form-control">
                                     <p for="username">change your Password</p>
                                     <a href="forgotpass.php">Click here to change password</a></label>
                                 </div>
-
                                 <button class="btn">Update</button>
-                                <a id="homebtn" class="btn" href="main.php">Go To Home Page</a>
-
-                                </tr>
-                        </table>
+                                <a id="homebtn" class="btn" href="../main.php">Go To Home Page</a>
                     </form>
-
                 </div>
-               
 </body>
-
 </html>

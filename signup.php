@@ -78,9 +78,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      // insert otp in users table
                      $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
-                     include 'sendotp.php';
+                     include 'partials/sendotp.php';
                        sendotp($to,$otp);
-                     header("location: verifyotp.php");
+                    //  header("location: main.php");
+                     header("location: partials/verifyotp.php");
             }
         }
         else{    
@@ -162,12 +163,13 @@ if($showAlert){
           <label>Select Image</label>
           <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
         </div>
-            <button>Signup</button>
+            <button  class="btn">Signup</button>
             <div class="foot" id="foot">
                 Already Have an Account?
                 <a href="login.php">Login Here</a>
             </div>
         </form>
     </div>
+    
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require 'partials/dbconnect.php';
+require 'dbconnect.php';
 $showError = false;
 session_start();
     $data=" ";
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if($otp == $data['otp']){
         echo "match";
-        header("location: main.php");
+        header("location: ../main.php");
     }
     else{
         $showError = "OTP does not match. Try Again";
@@ -30,8 +30,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Account</title>
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/alert.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/alert.css">
 
 </head>
 
@@ -59,7 +59,7 @@ if($showError){
         <label for="otp">Enter OTP</label>
     <input type="number" placeholder="Enter OTP HERE" id="otp" name="otp" required/>
     </div>
-    <button>Verify</button>
+    <button class="btn">Verify</button>
             
             <div class="foot" id="foot">
                 OTP has been sent to your Email ID <?php echo $mail; ?>
