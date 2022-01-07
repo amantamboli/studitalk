@@ -2,6 +2,9 @@
 session_start();
 require 'dbconnect.php';
 
+if(!isset($_SESSION['public_key']) && $_SESSION['loggedin'] !=true){
+    header("location: login.php");
+  }
 $public_key=$_SESSION['public_key'];
 
         $get_user="select * from users where public_key=$public_key";   

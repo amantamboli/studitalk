@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ E_WARNING); 
   require 'dbconnect.php';
   session_start();
-  if(!isset($_SESSION['public_key'])){
+  if(!isset($_SESSION['public_key']) && $_SESSION['loggedin'] !=true){
     header("location: login.php");
   }
 

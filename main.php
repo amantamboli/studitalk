@@ -1,7 +1,7 @@
 <?php 
   require 'partials/dbconnect.php';
   session_start();
-  if(!isset($_SESSION['public_key'])){
+  if(!isset($_SESSION['public_key']) && $_SESSION['loggedin'] !=true){
     header("location: login.php");
   }
   $query =  "SELECT * FROM users WHERE public_key = {$_SESSION['public_key']}";

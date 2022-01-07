@@ -1,7 +1,7 @@
 <?php 
   session_start();
   require 'partials/dbconnect.php';
-  if(!isset($_SESSION['public_key'])){
+  if(!isset($_SESSION['public_key']) && $_SESSION['loggedin'] !=true){
     header("location: login.php");
   }
   if($_SERVER["REQUEST_METHOD"] == "GET"){

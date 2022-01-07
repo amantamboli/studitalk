@@ -2,17 +2,22 @@
 require 'dbconnect.php';
 $showError = false;
 session_start();
+
+if(!isset($_SESSION['public_key'])){
+    header("location: login.php");
+  }
     $data=" ";
     $public_key = $_SESSION['public_key'];
     $sql = "Select * from users where public_key=$public_key";
     $result = mysqli_query($conn, $sql);
     $data = mysqli_fetch_assoc($result);
     $mail = $data['email'];
+    $loggedin = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $otp = $_POST["otp"];
     if($otp == $data['otp']){
-        echo "match";
+        $_SESSION['loggedin'] = true;
         header("location: ../main.php");
     }
     else{

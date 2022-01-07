@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(isset($_SESSION['public_key'])){
+    if(isset($_SESSION['public_key']) && $_SESSION['loggedin'] ==true){
         require 'dbconnect.php';
         $sender_id = $_SESSION['public_key'];
         if($_SERVER["REQUEST_METHOD"] == "POST"){

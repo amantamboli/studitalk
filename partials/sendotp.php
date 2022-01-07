@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -20,9 +21,9 @@ $body = "Your OTP is $otp";
 	$mail->Port = 587; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8'; 
-	$mail->Username   = 'phpmailer2211@gmail.com';                     //SMTP username
-    $mail->Password   = 'phpmailpass12345';
-	$mail->SetFrom("testingphp111@gmail.com");
+	$mail->Username   = '';                     //SMTP username
+    $mail->Password   = '';
+	$mail->SetFrom("");
 	$mail->Subject ="sucess";
 	$mail->Body =$body;
 	$mail->AddAddress($to);

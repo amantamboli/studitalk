@@ -1,7 +1,7 @@
 <?php 
     session_start();
     $output =""; 
-    if(isset($_SESSION['public_key'])){
+    if(isset($_SESSION['public_key']) && $_SESSION['loggedin'] ==true){
         require 'dbconnect.php';
         $reporter_id = $_SESSION['public_key'];
         

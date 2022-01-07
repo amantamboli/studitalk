@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['public_key'])){
+if(isset($_SESSION['public_key']) && $_SESSION['loggedin'] ==true){
     header("location: main.php");
   }
 
@@ -47,10 +47,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $existSql="select * from users where username='$username'";
     $result = mysqli_query($conn,$existSql);
 
-    $rowExists=mysqli_num_rows($result);
-    if($rowExists>0){
+    $existSql2="select * from users where email = '$email'";
+    $result2 = mysqli_query($conn,$existSql2);
+
+    $usernameExists=mysqli_num_rows($result);
+    $emailExists=mysqli_num_rows($result2);
+    if($usernameExists>0){
         $exists=true;
         $showError = " This username is alerady exists";
+    }
+    if($emailExists>0){
+        $showError = " This Email is alerady exists";
     }
     else{
         if(($password == $passwordc &&  $exists==false)){
