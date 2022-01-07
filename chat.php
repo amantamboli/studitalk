@@ -1,7 +1,4 @@
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
   session_start();
   require 'partials/dbconnect.php';
   if(!isset($_SESSION['public_key'])){
@@ -13,7 +10,7 @@ error_reporting(E_ALL);
          if(mysqli_num_rows($sql) > 0){
             $row = mysqli_fetch_assoc($sql);
          }else{
-            // header("location: main.php");
+            header("location: main.php");
           }
     }
 ?>
@@ -27,9 +24,6 @@ error_reporting(E_ALL);
   <title>Chat Area </title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -64,13 +58,7 @@ error_reporting(E_ALL);
         <button><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>
-
-    
   </div>
-  <script>
-  
-  </script>
-  <script src="js/chat.js"></script>
+<script src="js/chat.js"></script>
 </body>
-
 </html> 

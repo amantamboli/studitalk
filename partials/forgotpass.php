@@ -19,8 +19,8 @@ function sendMail($email,$token)
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = '';                     //SMTP username
-        $mail->Password   = '';                               //SMTP password
+        $mail->Username   = 'phpmailer2211@gmail.com';                     //SMTP username
+        $mail->Password   = 'phpmailpass12345';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
@@ -111,15 +111,7 @@ if(isset($_POST['send-reset-link']))
     <link rel="stylesheet" href="../css/alert.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
-<style>
-    .foot {
-        margin: 10px;
-        text-decoration: none;
-    }
-</style>
-
 <body>
-
     <div class="container">
         <div class="header">
             <h2>Reset Password</h2>

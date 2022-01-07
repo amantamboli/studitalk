@@ -21,13 +21,11 @@ window.addEventListener("mouseup", function (event) {
   let modal = document.querySelector(".modal");
   let more = document.querySelector(".more");
   if (event.target != modal && event.target.parentNode != modal) {
-    console.log("clicked2");
     modal.style.display = "none";
     more.style.display = "block";
   }
 });
 btn.addEventListener("click", function () {
-  console.log("clicked");
   let modal = document.querySelector(".modal");
   let more = document.querySelector(".more");
   modal.style.display = "block";

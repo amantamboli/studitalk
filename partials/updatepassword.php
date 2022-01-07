@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/alert.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 </head>
-
 <body>
 
 <?php
@@ -91,8 +90,6 @@ if(isset($_GET['email'])&& isset($_GET['token']))
              "; 
        }
     }
-
-
 ?>
 
         </form>

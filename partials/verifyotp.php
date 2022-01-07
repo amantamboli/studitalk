@@ -8,9 +8,9 @@ session_start();
     $result = mysqli_query($conn, $sql);
     $data = mysqli_fetch_assoc($result);
     $mail = $data['email'];
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $otp = $_POST["otp"];
-    
     if($otp == $data['otp']){
         echo "match";
         header("location: ../main.php");
@@ -18,8 +18,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $showError = "OTP does not match. Try Again";
     }
-  
-
 }
 ?>
 <!DOCTYPE html>
@@ -32,11 +30,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Verify Account</title>
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/alert.css">
-
 </head>
 
 <body>
-<?php
+    <?php
 if($showError){
     echo '<div class="alert error">
         <input type="checkbox" id="alert1"/>
@@ -49,24 +46,24 @@ if($showError){
         </div>';
 }
 ?>
-  
-<div class="container">
+
+    <div class="container">
         <div class="header">
             <h2>Verify OTP</h2>
         </div>
         <form id="form" class="form" method="post" action="">
-        <div class="form-control">
-        <label for="otp">Enter OTP</label>
-    <input type="number" placeholder="Enter OTP HERE" id="otp" name="otp" required/>
-    </div>
-    <button class="btn">Verify</button>
-            
+            <div class="form-control">
+                <label for="otp">Enter OTP</label>
+                <input type="number" placeholder="Enter OTP HERE" id="otp" name="otp" required />
+            </div>
+            <button class="btn">Verify</button>
+
             <div class="foot" id="foot">
-                OTP has been sent to your Email ID <?php echo $mail; ?>
+                OTP has been sent to your Email ID
+                <?php echo $mail; ?>
             </div>
         </form>
     </div>
- 
 </body>
 
 </html>

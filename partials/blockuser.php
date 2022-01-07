@@ -11,7 +11,6 @@
         $sql = "SELECT * FROM `blockreport` WHERE reporter_id=$reporter_id AND reported_id =$reported_id";
         
         $query = mysqli_query($conn, $sql);
-        // echo mysqli_num_rows($query);
         if(mysqli_num_rows($query) == 0){
             $sql2 = "INSERT INTO `blockreport`(`reporter_id`, `reported_id` ,`blockstatus`) VALUES ($reporter_id,$reported_id,1)";
             $query2 = mysqli_query($conn, $sql2);

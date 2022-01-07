@@ -1,7 +1,5 @@
- <!-- receiver_id -->
-<!-- sender_id -->
 <?php 
-error_reporting(0);
+error_reporting(E_ALL ^ E_WARNING); 
   require 'dbconnect.php';
   session_start();
   if(!isset($_SESSION['public_key'])){
@@ -37,24 +35,17 @@ error_reporting(0);
             $result4 = mysqli_query($conn, $sql4);
             $row4 =mysqli_fetch_array($result4);
             $blockstatus = $row4['blockstatus'];
-            
             if($blockstatus){
                 continue;
             }
-            // echo $preference_receiver."   ";
             $interest = "You both select :";
             foreach($preference_sender as $preference){
                 if(strstr($preference_receiver,$preference)){
-                  
                     $matchfound = true;
                     $interest = $interest ." ".$preference;
                 }
             }
-            
-           
-            
-            if($matchfound){
-                
+            if($matchfound){             
             $output .= '<a href="chat.php?user_id='. $row['public_key'] .'">
                     <div class="content">
                     <img src="images/'. $row['img'] .'" alt="">
@@ -70,50 +61,5 @@ error_reporting(0);
         }
 
     }
-
-    
-    // $output = "";
-    // if(mysqli_num_rows($result) == 0){
-    //     $output .= "No users are available to chat";
-    // }elseif(mysqli_num_rows($result) > 0){
-        
-    //     // echo $row3['blockstatus'];
-    //     while($row = mysqli_fetch_assoc($result)){
-            
-    //         $sql2 = "SELECT * FROM messages WHERE (receiver_id = {$row['public_key']}
-    //                 OR sender_id = {$row['public_key']}) AND (sender_id = {$sender_id} 
-    //                 OR receiver_id = {$sender_id}) ORDER BY msg_id DESC LIMIT 1";
-    //         $result2 = mysqli_query($conn, $sql2);
-    //         $row2 = mysqli_fetch_assoc($result2);
-
-    //         $sql3 = "SELECT * FROM blockreport WHERE reporter_id=$sender_id AND reported_id =$row[public_key]";
-    //         $result3 = mysqli_query($conn, $sql3);
-    //         $row3 =mysqli_fetch_array($result3);
-    //         $blockstatus = $row3['blockstatus'];
-            
-    //         if($blockstatus){
-    //             continue;
-    //         }
-
-    //         (mysqli_num_rows($result2) > 0) ? $shortm = $row2['msg'] : $shortm ="No message available";
-    //         (strlen($shortm) > 28) ? $msg =  substr($shortm, 0, 28) . '...' : $msg = $shortm;
-    //         if(isset($row2['sender_id'])){
-    //             ($sender_id == $row2['sender_id']) ? $you = "You: " : $you = "";
-    //         }else{
-    //             $you = "";
-    //         }
-            
-    
-    //         $output .= '<a href="chat.php?user_id='. $row['public_key'] .'">
-    //         <div class="content">
-    //         <div class="details">
-    //             <span>'. $row['username'] .'</span>
-    //             <p>'. $you . $msg .'</p>
-    //         </div>
-    //         </div>
-    //         <div class=""><i class="fas fa-circle"></i></div>
-    //     </a>';
-    //     }
-    // }
     echo $output;
 ?>

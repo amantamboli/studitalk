@@ -11,7 +11,7 @@ $public_key=$_SESSION['public_key'];
         $email=$row['email'];
         $password=$row['password'];
         $preferences=$row['preferences'];
-        $img=$row['img'];
+        $new_img_name=$row['img'];
 
         $updateuser = false;
         $updatemail =false;
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             if(in_array($img_type, $types) === true){
                 $time = time();
                 $new_img_name = $time.$img_name;
-                if(move_uploaded_file($tmp_name,"images/".$new_img_name)){
+                if(move_uploaded_file($tmp_name,"../images/".$new_img_name)){
                     
                 }
             }else{
@@ -126,7 +126,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                 <div class="field image form-control">
                                     <label for="image">change profile image</label>
                                     <input id="image" type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg"
-                                        value="<?php echo $img;?>" />
+                                         />
                                 </div>
                                 <div class="form-control">
                                     <label for="email">change your Email</label>

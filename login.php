@@ -9,15 +9,14 @@ $showError = false;
 require 'partials/dbconnect.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   
-   $username = $_POST["username"];
+    $username = $_POST["username"];
     $password = $_POST["password"];
-     
     $sql = "Select * from users where username='$username'";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     $row=mysqli_fetch_array($result);
     if ($num == 1){
-        // while($row=mysqli_fetch_array($result)){
+        
             if(password_verify($password,$row['password'])){
                 $login = true;
                 if($login){
@@ -36,21 +35,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      include 'partials/sendotp.php';
                        sendotp($to,$otp);
                     header("location: partials/verifyotp.php");
-                    //  header("location: main.php");
-                     
                 }
             }
             else{
                 $showError = "password not match";
             }
-        // }
     } 
     else{
         $showError = "Invalid Credentials";
     }
-    
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,9 +58,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/alert.css">
 </head>
-
 <body>
-    <?php
+<?php
 
 if($showError){
     echo '<div class="alert error">
@@ -79,8 +72,6 @@ if($showError){
         </p>
         </div>';
 }
-
-
 ?>
 
     <div class="container">
@@ -91,18 +82,14 @@ if($showError){
             <div class="form-control">
                 <label for="username">Username</label>
                 <input type="text" placeholder="" id="username" name="username" required />
-
             </div>
-
             <div class="form-control">
                 <label for="username">Password</label>
                 <input type="password" placeholder="" id="password" name="password"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                     required />
-
             </div>
-
             <button id="submit"  class="btn">Login</button>
             <div class="foot" id="foot">
                 Don't Have an Account?
@@ -112,12 +99,6 @@ if($showError){
                 <a href="partials/forgotpass.php">Forgot Password</a>
             </div>
         </form>
-        
     </div>
-
-    <script>
-
-    </script>
 </body>
-
 </html>

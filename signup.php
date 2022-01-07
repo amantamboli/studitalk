@@ -1,12 +1,9 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 session_start();
 if(isset($_SESSION['public_key'])){
     header("location: main.php");
   }
-//    Seb@1234 johnshelby392@gmail.com
+
 $showAlert = false;
 $showError = false;
 $exists = false;
@@ -80,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      $result2 = mysqli_query($conn,$sql2);
                      include 'partials/sendotp.php';
                        sendotp($to,$otp);
-                    //  header("location: main.php");
+                    
                      header("location: partials/verifyotp.php");
             }
         }
@@ -101,12 +98,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="css/alert.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 </head>
-<style>
-    .foot{
-    margin: 10px;
-    text-decoration: none;
-}
-</style>
 <body>
 <?php
 if($showError){

@@ -1,7 +1,4 @@
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
     session_start();
     $output =""; 
     if(isset($_SESSION['public_key'])){
@@ -18,11 +15,9 @@ error_reporting(E_ALL);
         
         $sql = "SELECT * FROM `blockreport` WHERE reporter_id=$reporter_id AND reported_id =$reported_id";
         $query = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($query) == 0){
-            
+        if(mysqli_num_rows($query) == 0){          
             $sql2 = "INSERT INTO `blockreport` (`reporter_id`, `reported_id` ,`reportcount`) VALUES ($reporter_id,$reported_id,1)";
-            $query2 = mysqli_query($conn, $sql2);
-           
+            $query2 = mysqli_query($conn, $sql2);       
             if($query2){
             $output = "true"; 
             echo $output;

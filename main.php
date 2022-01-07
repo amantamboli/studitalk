@@ -29,13 +29,10 @@
       <header>
         <div class="content">
         <img src="images/<?php echo $row['img']; ?>" alt="">
-
-
           <div class="details">
             <span>
               <?php echo $row['username'] ?>
             </span>
-
           </div>
         </div>
         <div class="more">

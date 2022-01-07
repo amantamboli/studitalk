@@ -1,4 +1,3 @@
-console.log("connected");
 const form = document.querySelector(".typing-area"),
   receiver_id = form.querySelector(".receiver_id").value,
   inputField = form.querySelector(".input-field"),
@@ -90,10 +89,8 @@ reportBtn.onclick = () => {
     xhr.open("POST", "partials/reportuser.php", true);
     xhr.onload = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        console.log(xhr.status);
         if (xhr.status === 200) {
           let data = xhr.response;
-          console.log(data);
           if (data) {
             alert(" This User Has Been Reported");
             modal.classList.remove("modal-active");
@@ -129,7 +126,6 @@ blockBtn.onclick = () => {
 };
 function dblclick1(event) {
   let msg_id = event.toElement.id;
-  console.log(msg_id, receiver_id);
   var data = {
     receiver_id: receiver_id,
     msg_id: msg_id,
@@ -148,5 +144,3 @@ function dblclick1(event) {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send("receiver_id=" + receiver_id + "&msg_id=" + msg_id);
 }
-
-

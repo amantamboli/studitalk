@@ -213,7 +213,7 @@ flex-direction: row;
   content: '\f00d';
 }
 .users-list{
-  max-height: 350px;
+  max-height: auto;
   overflow-y: auto;
 }
 :is(.users-list, .chat-box)::-webkit-scrollbar{

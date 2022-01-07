@@ -20,8 +20,8 @@ $body = "Your OTP is $otp";
 	$mail->Port = 587; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8'; 
-	$mail->Username   = '';                     //SMTP username
-    $mail->Password   = '';
+	$mail->Username   = 'phpmailer2211@gmail.com';                     //SMTP username
+    $mail->Password   = 'phpmailpass12345';
 	$mail->SetFrom("testingphp111@gmail.com");
 	$mail->Subject ="sucess";
 	$mail->Body =$body;
@@ -32,7 +32,7 @@ $body = "Your OTP is $otp";
 		'allow_self_signed'=>true
 	));
 	if(!$mail->Send()){
-		// echo $mail->ErrorInfo;
+		echo $mail->ErrorInfo;
 		echo 'fail';
 	}else{
 		echo 'Sent';
