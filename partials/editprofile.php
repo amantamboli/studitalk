@@ -135,9 +135,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                     <label for="email">change your Email</label>
                                     <input id="email" type="email" name="email" value="<?php echo $email;?>" />
                                 </div>
-                                <div class="form-control">
+                                <div class="form-control tooltip">
                                     <label for="preferences">change your Preferences</label>
                                     <input id="preferences" type="preferences" name="preferences" value="<?php echo $preferences;?>" />
+                                    <span class="tooltiptext">Add new preference seperated by space</span>
                                 </div>
                                 <div class="form-control">
                                     <p for="username">change your Password</p>

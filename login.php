@@ -30,7 +30,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      $public_key = $data['public_key'];
                      $to = $data['email'];
                      $otp = $random_id = mt_rand(111111, 999999);
-                     $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
+                     date_default_timezone_set('Asia/Kolkata');
+                        $date=date("Y-m-d h:i");
+                        $minutes_to_add = 5;
+                        $time = new DateTime($date);
+                        $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+                        $otpexp = $time->format('Y-m-d H:i');
+                     $sql2 = "UPDATE `users` SET `otp`=$otp, `otpexp` ='$otpexp' WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
                      include 'partials/sendotp.php';
                        sendotp($to,$otp);

@@ -54,7 +54,7 @@ error_reporting(E_ALL ^ E_WARNING);
                        <p>'.$interest.'</p>
                     </div>
                      </div>
-                     <div class=""><i class="fas fa-circle"></i></div>
+                     <div class=""></div>
                  </a>';
             }
             $matchfound = false;

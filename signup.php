@@ -79,16 +79,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      $public_key = $data['public_key'];
                      $to = $data['email'];
                      $otp = $random_id = mt_rand(111111, 999999);
+                     date_default_timezone_set('Asia/Kolkata');
+                        $date=date("Y-m-d h:i");
+                        $minutes_to_add = 5;
+                        $time = new DateTime($date);
+                        $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+                        $otpexp = $time->format('Y-m-d H:i');
                      // insert otp in users table
-                     $sql2 = "UPDATE `users` SET `otp`=$otp WHERE public_key = $public_key;";
+                     $sql2 = "UPDATE `users` SET `otp`=$otp, `otpexp` ='$otpexp' WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
                      include 'partials/sendotp.php';
                        sendotp($to,$otp);
                     
                      header("location: partials/verifyotp.php");
-            }
+            } 
         }
-        else{    
+        else{     
             $showError = "Password and confirm password do not match";
         }
     }
@@ -103,8 +109,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Signup </title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/alert.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 </head>
+<style>
+.checkbox{
+    font-size: 15px;
+    
+
+}
+</style>
 <body>
 <?php
 if($showError){
@@ -153,13 +167,19 @@ if($showAlert){
                 <label for="username">Password check</label>
                 <input type="password" placeholder="re-enter" id="password2" name="passwordc" required/>
             </div>
-            <div class="form-control">
+            <div class="form-control tooltip">
                 <label for="preferences">preferences</label>
                 <input type="text" placeholder="preferences" id="preferences" name="preferences" required/>
+                <span class="tooltiptext">Add new preference seperated by space</span>
             </div>
             <div class="field image">
           <label>Select Image</label>
           <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+        </div>
+        <div class=" checkbox">
+            <input type="checkbox" name="checkbox" required/>
+            <label for="checkbox"><a href="termscondition.html"> I accept Terms and Conditions</a></label>
+            
         </div>
             <button  class="btn">Signup</button>
             <div class="foot" id="foot">

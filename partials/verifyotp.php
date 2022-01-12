@@ -16,7 +16,9 @@ if(!isset($_SESSION['public_key'])){
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $otp = $_POST["otp"];
-    if($otp == $data['otp']){
+    date_default_timezone_set('Asia/Kolkata');
+    $time=date("Y-m-d h:i");
+    if($otp == $data['otp'] && $data['otpexp'] > $time){
         $_SESSION['loggedin'] = true;
         header("location: ../main.php");
     }

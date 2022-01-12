@@ -25,6 +25,7 @@ body{
 }
 
 
+
 /* Login & Signup Form CSS Start */
 .form{
   padding: 25px 30px;
@@ -358,7 +359,7 @@ flex-direction: row;
 }
 .modal {
   width: 10vw;
-  height: 10vh;
+  height: 15vh;
   background: white;
   border-radius: 6px;
   box-shadow: -3px 3px 3px 1px rgba(0, 0, 0, 0.1),
@@ -370,6 +371,11 @@ flex-direction: row;
   right: 37%;
   top: 35px;
 }
+.settingm{
+  height: 8vh;
+}
+
+
 
 @keyframes fadein {
   0% {
@@ -383,10 +389,14 @@ flex-direction: row;
 }
 
 .btnm {
-  height: 49%;
+  height: 32.80%;
   text-align: center;
   cursor: pointer;
   box-shadow: 1px 1px 1px 0.5px rgba(0, 0, 0, 0.1);
+}
+.setting {
+  height: 49%;
+  
 }
 
 .btnm:hover {
@@ -481,10 +491,14 @@ cursor: pointer;
   }
   .modal {
     width: 35vw;
-    height: 8vh;
+    height: 12vh;
     top: 30px;
     right: 20px;
 
+}
+
+.settingm{
+  height: 8vh;
 }
 .content > .details{
   margin-left: 10px;

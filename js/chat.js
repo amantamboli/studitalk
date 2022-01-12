@@ -1,3 +1,4 @@
+console.log("hello")
 const form = document.querySelector(".typing-area"),
   receiver_id = form.querySelector(".receiver_id").value,
   inputField = form.querySelector(".input-field"),
@@ -144,3 +145,23 @@ function dblclick1(event) {
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send("receiver_id=" + receiver_id + "&msg_id=" + msg_id);
 }
+
+// let viewprofile = document.getElementById('viewprofile');
+//   console.log(receiver_id)
+//   viewprofile.addEventListener('click',function(){
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("POST", "partials/viewprofile.php", true);
+//     xhr.onload = () => {
+//       if (xhr.readyState === XMLHttpRequest.DONE) {
+//         if (xhr.status === 200) {
+//           let data = xhr.response;
+//           window.location.href = 'partials/viewprofile.php';
+//           console.log(data)
+          
+//         }
+//       }
+//     };
+//     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhr.send("receiver_id=" + receiver_id);
+    
+//   })

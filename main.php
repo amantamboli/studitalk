@@ -38,11 +38,11 @@
         <div class="more">
         <i class="fas fa-cog dots" id="btnm"></i>
         </div>
-        <div class="modal">
-              <div class="btnm">
+        <div class="modal settingm">
+              <div class="btnm setting">
               <a href="partials/editprofile.php"> Edit Profile</a>
               </div>
-              <div class="btnm">
+              <div class="btnm setting">
                 <a href="partials/logout.php">Logout</a> 
               </div>
           </div>

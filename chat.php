@@ -47,8 +47,11 @@
                     <div class="btnm" id="block">
                         block
                     </div>
+                    <div class="btnm" id="viewprofile">
+                       <a href="partials/viewprofile.php?user_id=<?php echo $user_id; ?>">view profile </a> 
+                    </div>
                 </div>
-      </header>
+      </header> 
       <div class="chat-box">
 
       </div>
@@ -59,6 +62,7 @@
       </form>
     </section>
   </div>
-<script src="js/chat.js"></script>
+<script src="js/chat.js"></script> 
+
 </body>
 </html> 
