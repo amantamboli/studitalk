@@ -7,41 +7,40 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 function sendMail($email,$token)
     {
-        // require('PHPMailer/PHPMailer.php');
-        // require('PHPMailer/SMTP.php');
-        // require('PHPMailer/Exception.php');
     
-    $mail = new PHPMailer(true);
+    //Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
-    try {
-        //Server settings
-                             //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = '';                     //SMTP username
-        $mail->Password   = '';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    
-        //Recipients
-        $mail->setFrom('');
-        $mail->addAddress($email);     //Add a recipient
-        
-    //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
+// $mail = new PHPMailer(); 
+	// $mail->SMTPDebug  = 3; // display all debug content
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'tls'; 
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 587; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8'; 
+	$mail->Username   = '';                     //SMTP username
+    $mail->Password   = '';
+	$mail->SetFrom("");
+	$mail->addAddress($email);                                  //Set email format to HTML
         $mail->Subject = 'Password reset link';
         $mail->Body    = "we got a request from you to reset you password<br>
         click the link below: <br>
-        <a href='https://mahi.codes/chatapp/partials/updatepassword.php?email=$email&token=$token'>Reset Password</a>";
-       
-    
-        $mail->send();
-        return true;
-    } catch (Exception $e) {
-        return false;
-    }
+        <a href='http://192.168.0.100/chat2/partials/updatepassword.php?email=$email&token=$token'>Reset Password</a>";
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>true
+	));
+	if(!$mail->Send()){
+		echo $mail->ErrorInfo;
+		echo 'fail';
+	}else{
+		return true;
+	}
 }
+
 
 if(isset($_POST['send-reset-link']))
 {

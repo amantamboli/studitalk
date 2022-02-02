@@ -49,9 +49,10 @@
                     </div>
                     <div class="btnm" id="viewprofile">
                        <a href="partials/viewprofile.php?user_id=<?php echo $user_id; ?>">view profile </a> 
+                       
                     </div>
                 </div>
-      </header> 
+      </header>  
       <div class="chat-box">
 
       </div>

@@ -6,10 +6,23 @@ if(!isset($_SESSION['public_key']) && $_SESSION['loggedin'] !=true){
   }
   
 
-  if($_SERVER["REQUEST_METHOD"] == "GET")
+  if($_SERVER["REQUEST_METHOD"] == "GET") 
   {
         $user_id =$_GET['user_id'];
         
+        $get_user="select * from users where public_key=$user_id";   
+        $run_user=mysqli_query($conn,$get_user);
+        $row=mysqli_fetch_array($run_user);
+        $username=$row['username'];
+        $email=$row['email'];
+        $password=$row['password'];
+        $preferences=$row['preferences'];
+        $new_img_name=$row['img'];
+    }
+  if($_SERVER["REQUEST_METHOD"] == "POST") 
+  {
+        $user_id =$_POST['user_id'];
+        echo "post";
         $get_user="select * from users where public_key=$user_id";   
         $run_user=mysqli_query($conn,$get_user);
         $row=mysqli_fetch_array($run_user);
