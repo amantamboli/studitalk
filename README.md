@@ -37,7 +37,7 @@ and import database file and you're ready to use.
 [Documentation](https://linktodocumentation)
 
 
-## Authors
+## Author
 
 - [@amantamboli](https://www.github.com/Aman-tamboli)
 
@@ -58,5 +58,5 @@ Javascript, HTML, CSS, C++, Java
 
 ## Feedback
 
-If you have any feedback, please reach out to us at amantamboli7781@gmail.com
+If you have any feedback, please reach out to me at amantamboli7781@gmail.com
 
