@@ -1,7 +1,7 @@
 
 # Web Based Chat Application
 
-Motive of this chat Application is to connect similar interest students 
+Motive of this chat application is to bring similar interest students 
 closer. Many students faces difficulties to solve their doubts.
 and most of the students afraid to ask questions to teachers or they 
 shy to do so. This application allows students to interact with 
@@ -20,7 +20,7 @@ User need to create an account to use this appliaction.
 
 ## Deployment
 
-To deploy this project you need XAMPP or LAMP
+To deploy this project you need <code> XAMPP </code> or <code>  LAMP</code> 
 Import the database and setup is ready!
 
 
@@ -32,14 +32,6 @@ and import database file and you're ready to use.
 
 
 
-
-## Author
-
-- [@amantamboli](https://www.github.com/Aman-tamboli)
-
-
-## 🚀 About Me
-I'm a Computer Science student.
 
 
 
