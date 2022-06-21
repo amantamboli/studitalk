@@ -43,6 +43,8 @@ Start the Apache Server and MySql server
 
 In your web browser enter the address : <code> ``` http://localhost:chatapp ```</code>
 
+### If you're seeing this, don't forget to add ⭐ to the repository.
+
 
 
 
