@@ -31,10 +31,6 @@ Simply make a folder in htdocs and create database with name chatapp
 and import database file and you're ready to use. 
 
 
-    
-## Documentation
-
-[Documentation](https://linktodocumentation)
 
 
 ## Author
@@ -46,17 +42,5 @@ and import database file and you're ready to use.
 I'm a Computer Science student.
 
 
-## 🛠 Skills
-Javascript, HTML, CSS, C++, Java
 
-
-## 🔗 Links
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amantamboli)
-
-
-
-## Feedback
-
-If you have any feedback, please reach out to me at amantamboli7781@gmail.com
 

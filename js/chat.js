@@ -38,7 +38,7 @@ chatBox.onmouseenter = () => {
 
 chatBox.onmouseleave = () => {
   chatBox.classList.remove("active");
-};
+}; 
 
 setInterval(() => {
   let xhr = new XMLHttpRequest();
