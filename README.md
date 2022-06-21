@@ -17,19 +17,31 @@ User need to create an account to use this appliaction.
 - Responsive Design
 - Cross platform
 
+<h2>Technologies Used:</h2>
+<ul>
+    <li>PHP</li>   
+    <li>JavaScript</li>
+    <li>HTML CSS</li>
+</ul>
 
-## Deployment
+## Installation
+<p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.</p>
 
-To deploy this project you need <code> XAMPP </code> or <code>  LAMP</code> 
-Import the database and setup is ready!
+<h4>Prerequisites</h4>
+To install this project you need <code> XAMPP </code> or <code>  LAMP</code> 
 
+Open htdocs folder in XAMPP and open <code>Command Prompt</code> or <code>PowerShell</code>
+and run following command
 
-## Installation Run Locally
+```bash
+git clone git@github.com:amantamboli/chatapp.git
+```
 
-To install this project on your system you need XAMPP or LAMP. 
-Simply make a folder in htdocs and create database with name chatapp
-and import database file and you're ready to use. 
+Import the database.
 
+Start the Apache Server and MySql server
+
+In your web browser enter the address : <code> ``` http://localhost:chatapp ```</code>
 
 
 
