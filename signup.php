@@ -88,10 +88,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                      // insert otp in users table
                      $sql2 = "UPDATE `users` SET `otp`=$otp, `otpexp` ='$otpexp' WHERE public_key = $public_key;";
                      $result2 = mysqli_query($conn,$sql2);
-                     include 'partials/sendotp.php';
-                       sendotp($to,$otp);
+                    //  include 'partials/sendotp.php';
+                    //    sendotp($to,$otp);
                     
-                     header("location: partials/verifyotp.php");
+                    //  header("location: partials/verifyotp.php");
+                    $_SESSION['loggedin'] = true;
+                    header("location: main.php");
             } 
         }
         else{     
