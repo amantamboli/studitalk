@@ -135,6 +135,7 @@ if(isset($_SESSION['public_key']) && isset($_SESSION['loggedin']) ==true){
 
             .box {
                 width: 80%;
+                text-align: center;
             }
 
             .github {
@@ -185,10 +186,10 @@ if(isset($_SESSION['public_key']) && isset($_SESSION['loggedin']) ==true){
 
             <a href="login.php" class="btn btn-outline-dark btn-space">login</a>
         </div>
-        <div class="github">
+        <!-- <div class="github">
             <a href="https://github.com/Aman-tamboli/chatapp" target="_blank"> Follow Our Code On GitHub
                 <i class="fab fa-github"></i></a>
-        </div>
+        </div> -->
     </div>
     <div class="footer">
         &copy; 2022
