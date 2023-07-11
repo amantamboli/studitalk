@@ -1,13 +1,7 @@
 
 # Web Based Chat Application
 
-Motive of this chat application is to bring similar interest students 
-closer. Many students faces difficulties to solve their doubts.
-and most of the students afraid to ask questions to teachers or they 
-shy to do so. This application allows students to interact with 
-similar interest students. User of this appliaction need to put 
-preference(interest) to start chat with same preference students.
-User need to create an account to use this appliaction. 
+The primary goal of this chat application is to connect students with similar interests, fostering a supportive and engaging environment. Many students encounter challenges when seeking answers to their doubts, often hesitating to approach teachers directly. This application addresses that issue by allowing students to interact with peers who share their interests. Users can specify their preferences or interests to initiate chats with like-minded students. To utilize this application, users are required to create an account, enabling them to access its features and connect with others. By facilitating communication among students, this application aims to create a platform where knowledge-sharing and learning thrive. 
 
 
 ## Features
